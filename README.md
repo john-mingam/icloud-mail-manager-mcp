@@ -251,3 +251,12 @@ icloud-mail-manager-mcp/
 ## License
 
 MIT
+
+
+---
+
+## Author
+
+John Mingam
+
+Website: https://johnmingam.com
