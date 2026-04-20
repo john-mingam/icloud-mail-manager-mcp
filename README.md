@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <b>Enterprise-grade MCP server for full Apple iCloud Mail operations.</b><br>
+  <b>Enterprise-grade Claude Extension for full Apple iCloud Mail operations.</b><br>
   Production-ready documentation for clean GitHub publishing.
 </p>
 
@@ -23,7 +23,7 @@
 
 ## Product Overview
 
-`icloud-mail-manager` is a production-focused Python MCP server that enables complete Apple iCloud Mail management through IMAP + SMTP.
+`icloud-mail-manager` is a production-focused Python Claude Extension that enables complete Apple iCloud Mail management through IMAP + SMTP.
 
 It is built for modern AI toolchains and supports:
 - High-confidence inbox automation
@@ -245,3 +245,11 @@ icloud-mail-manager-mcp/
 ## License
 
 MIT
+
+---
+
+## Author
+
+John Mingam
+
+Website: https://johnmingam.com
