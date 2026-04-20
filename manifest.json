@@ -1,0 +1,76 @@
+{
+  "$schema": "../../dist/mcpb-manifest.schema.json",
+  "manifest_version": "0.3",
+  "name": "icloud-mail-manager",
+  "display_name": "iCloud Mail Manager",
+  "version": "1.0.0",
+  "description": "Manage Apple iCloud Mail through MCP using IMAP and SMTP.",
+  "author": {
+    "name": "johnmingam"
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "bootstrap.py",
+    "mcp_config": {
+      "command": "/opt/homebrew/bin/python3",
+      "args": [
+        "${__dirname}/bootstrap.py"
+      ],
+      "env": {
+        "ACCOUNT_MODE": "${ACCOUNT_MODE}",
+        "ICLOUD_EMAIL": "${ICLOUD_EMAIL}",
+        "ICLOUD_APP_PASSWORD": "${ICLOUD_APP_PASSWORD}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "list_folders",
+      "description": "List all mail folders and recursive tree structure."
+    },
+    {
+      "name": "manage_folder",
+      "description": "Create, rename, or delete a folder or subfolder."
+    },
+    {
+      "name": "search_emails",
+      "description": "Search emails by sender, subject, date range, and keyword."
+    },
+    {
+      "name": "read_email",
+      "description": "Read full email content (plain text and HTML) by UID."
+    },
+    {
+      "name": "manage_attachments",
+      "description": "List or save attachments for a specific email UID."
+    },
+    {
+      "name": "send_email",
+      "description": "Send an email with rich text and optional attachments."
+    },
+    {
+      "name": "organize_email",
+      "description": "Move an email or mark as read/unread."
+    },
+    {
+      "name": "suggest_organization",
+      "description": "Suggest folder organization based on account mode and frequent senders."
+    }
+  ],
+  "keywords": [
+    "icloud",
+    "mail",
+    "mcp",
+    "imap",
+    "smtp",
+    "automation"
+  ],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "icloud-mail-manager",
+  "version": "1.0.0",
+  "description": "Claude Code plugin exposing an MCP server for Apple iCloud Mail management.",
+  "author": {
+    "name": "johnmingam"
+  },
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/"
+}

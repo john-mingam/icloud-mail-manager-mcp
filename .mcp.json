@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "icloud-mail-manager": {
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/server.py"
+      ],
+      "env": {
+        "ICLOUD_EMAIL": "${ICLOUD_EMAIL}",
+        "ICLOUD_APP_PASSWORD": "${ICLOUD_APP_PASSWORD}",
+        "ACCOUNT_MODE": "${ACCOUNT_MODE}"
+      }
+    }
+  }
+}
