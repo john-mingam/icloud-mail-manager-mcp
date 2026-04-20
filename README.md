@@ -16,7 +16,13 @@
   Production-ready documentation for clean GitHub publishing.
 </p>
 
+<p align="center">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3YxOWpqY2Q3OW9vd2QxZmx1eHh2aTBzMW9zbnppMmViNnBrYnJ6dyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ZVik7pBtu9dNS/giphy.gif" width="960" alt="iCloud Mail Manager Live Demo" />
+</p>
+
+
 ---
+
 
 > [!IMPORTANT]
 > Never commit real credentials. Keep only `.env.example` in Git and use `.env` locally.
@@ -245,11 +251,3 @@ icloud-mail-manager-mcp/
 ## License
 
 MIT
-
----
-
-## Author
-
-John Mingam
-
-Website: https://johnmingam.com
