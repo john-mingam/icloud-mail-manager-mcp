@@ -1,183 +1,177 @@
-# iCloud Mail Manager MCP
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=240&color=0:0A2540,50:1B4965,100:2C7DA0&text=iCloud%20Mail%20Manager%20MCP&fontColor=ffffff&fontSize=46&fontAlignY=38&desc=MCP%20Automation%20for%20Apple%20iCloud%20Mail&descAlignY=58&animation=fadeIn" alt="iCloud Mail Manager MCP Hero Banner" />
+</p>
 
-<div align="center">
+<p align="center">
+  <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white"></a>
+  <a href="https://modelcontextprotocol.io/"><img alt="MCP" src="https://img.shields.io/badge/Model%20Context%20Protocol-Ready-0A7EA4?style=for-the-badge"></a>
+  <img alt="IMAP" src="https://img.shields.io/badge/IMAP-imap.mail.me.com-00599C?style=for-the-badge">
+  <img alt="SMTP" src="https://img.shields.io/badge/SMTP-smtp.mail.me.com-1D4ED8?style=for-the-badge">
+  <img alt="Modes" src="https://img.shields.io/badge/Modes-PRIVATE%20%7C%20BUSINESS%20%7C%20MIXED-334155?style=for-the-badge">
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-16A34A?style=for-the-badge">
+</p>
 
-### A complete MCP server for Apple iCloud Mail management (IMAP + SMTP)
-
-**Built with Python + MCP SDK**
-
-</div>
+<p align="center">
+  <b>Enterprise-grade MCP server for full Apple iCloud Mail operations.</b><br>
+  Production-ready documentation for clean GitHub publishing.
+</p>
 
 ---
 
-## FR - Presentation
+> [!IMPORTANT]
+> Never commit real credentials. Keep only `.env.example` in Git and use `.env` locally.
 
-**icloud-mail-manager** est un serveur MCP Python qui permet de piloter un compte Apple iCloud Mail avec un mot de passe d'application Apple.
+## Product Overview
 
-Fonctionnalites incluses :
-- Liste recursive des dossiers
-- Gestion des dossiers (creer, renommer, supprimer)
-- Recherche avancee d'emails
-- Lecture complete d'un email (texte + HTML)
-- Gestion des pieces jointes (lister, sauvegarder)
-- Envoi d'emails riches avec pieces jointes
-- Organisation des emails (deplacer, lu/non-lu)
-- Suggestion automatique de structure de dossiers selon le mode de compte
+`icloud-mail-manager` is a production-focused Python MCP server that enables complete Apple iCloud Mail management through IMAP + SMTP.
 
-Modes de compte pris en charge via `ACCOUNT_MODE` :
+It is built for modern AI toolchains and supports:
+- High-confidence inbox automation
+- Structured folder and message operations
+- Smart organization strategies by account context
+- Secure credential handling and robust connection recovery
+
+---
+
+## Visual Tool Dashboard
+
+| Tool | What It Does | Typical Use |
+|---|---|---|
+| `list_folders` | Lists all folders and recursive hierarchy | Discover full mailbox structure |
+| `manage_folder` | Creates, renames, or deletes folders/subfolders | Organize mailbox taxonomy |
+| `search_emails` | Advanced email filtering by sender/subject/date/keyword | Build targeted workflows |
+| `read_email` | Reads full email body (text + HTML) by UID | Analyze message content |
+| `manage_attachments` | Lists and saves attachments | Archive or process files |
+| `send_email` | Sends rich emails with optional attachments | Outbound communication automation |
+| `organize_email` | Moves email or sets read/unread state | Operational inbox triage |
+| `suggest_organization` | Suggests folders based on senders + mode | Auto-structure recommendations |
+
+### Account Context Modes
+
 - `PRIVATE`
 - `BUSINESS`
 - `MIXED`
 
----
+How each mode impacts organization suggestions:
 
-## EN - Overview
+- `PRIVATE`: Personal-life oriented suggestions (family, shopping, subscriptions, travel, personal finance, social updates).
+- `BUSINESS`: Work-oriented suggestions (clients, projects, invoices, legal, operations, HR, internal communication).
+- `MIXED`: Hybrid strategy that balances personal and professional senders in the same mailbox.
 
-**icloud-mail-manager** is a full Python MCP server to manage an Apple iCloud Mail account using an Apple App-Specific Password.
+Mode scope:
 
-Included capabilities:
-- Recursive folder listing
-- Folder management (create, rename, delete)
-- Advanced email search
-- Full email reading (text + HTML)
-- Attachment handling (list, save)
-- Rich email sending with attachments
-- Email organization (move, read/unread)
-- Context-aware folder strategy suggestions based on account mode
-
-Supported account modes through `ACCOUNT_MODE`:
-- `PRIVATE`
-- `BUSINESS`
-- `MIXED`
+- The mode primarily influences `suggest_organization` recommendations.
+- Core email actions (`search_emails`, `read_email`, `send_email`, `organize_email`) remain available in all modes.
 
 ---
 
-## Installation
+## Quick Start
 
-1. Create and activate a Python virtual environment.
-2. Install dependencies:
+### 1. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Create a `.env` file in the project root:
+### 2. Create local environment file
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env`:
 
 ```env
 ICLOUD_EMAIL=your_icloud_email@icloud.com
 ICLOUD_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
-ACCOUNT_MODE=PRIVATE
+ACCOUNT_MODE=MIXED
+```
+
+### 3. Run server directly
+
+```bash
+python server.py
 ```
 
 ---
 
 ## Apple App-Specific Password
 
-### FR - Generer le mot de passe d'application Apple
-
-1. Connectez-vous a votre compte Apple : https://appleid.apple.com/
-2. Ouvrez la section **Sign-In and Security**.
-3. Cliquez sur **App-Specific Passwords**.
-4. Cliquez sur **Generate an app-specific password**.
-5. Donnez un nom (ex: MCP iCloud Mail), puis validez.
-6. Copiez le mot de passe genere et collez-le dans `ICLOUD_APP_PASSWORD`.
-
-### EN - Generate your Apple App-Specific Password
-
-1. Sign in to your Apple account: https://appleid.apple.com/
-2. Open **Sign-In and Security**.
-3. Click **App-Specific Passwords**.
-4. Click **Generate an app-specific password**.
-5. Provide a label (for example: MCP iCloud Mail).
-6. Copy the generated password and paste it into `ICLOUD_APP_PASSWORD`.
+1. Sign in at https://appleid.apple.com/
+2. Open **Sign-In and Security**
+3. Click **App-Specific Passwords**
+4. Click **Generate an app-specific password**
+5. Add a label (for example: `MCP iCloud Mail`)
+6. Copy the generated password into `ICLOUD_APP_PASSWORD`
 
 ---
 
-## Run the MCP Server
+## Integration Modes
 
-```bash
-python server.py
-```
+Claude supports two different integration models. They are not the same:
 
-The server starts with MCP stdio transport and exposes all tools.
+| Model | Designed For | Main Files | Typical Use |
+|---|---|---|---|
+| Plugin Mode | Claude Code (developer workflow) | `.claude-plugin/plugin.json`, `.mcp.json` | Local development and fast iteration |
+| Extensions Mode | Claude Extensions runtime | `manifest.json`, `bootstrap.py` | Packaged extension behavior and managed startup |
 
----
+### Claude Code Plugin Mode
 
-## Claude Code Plugin Mode (Fix for manifest error)
+> [!NOTE]
+> If you see `No manifest.json found in extension folder`, you are likely using Plugin mode while expecting Extensions mode, or vice versa.
 
-If you saw this error:
-
-`No manifest.json found in extension folder`
-
-You are likely mixing extension systems. For Claude Code plugins, the manifest file is:
-
-- `.claude-plugin/plugin.json` (not `manifest.json`)
-
-This repository now includes a valid Claude Code plugin structure:
-
+Plugin manifest:
 - `.claude-plugin/plugin.json`
-- `.mcp.json`
-- `skills/icloud-help/SKILL.md`
 
-### Test locally as a Claude Code plugin
+Run locally:
 
 ```bash
 cd icloud-mail-manager-mcp
 claude --plugin-dir .
 ```
 
-Inside Claude Code:
-
+Then in Claude Code:
 1. Run `/reload-plugins`
-2. Check `/agents` and available MCP tools
-3. Call MCP tools such as `list_folders` or `search_emails`
+2. Verify tools are visible
+3. Trigger a tool such as `search_emails`
 
-### Environment variables for plugin mode
+Plugin environment source:
+- `.mcp.json`
 
-Before launching Claude Code, export these variables:
+What it does:
 
-```bash
-export ICLOUD_EMAIL="your_icloud_email@icloud.com"
-export ICLOUD_APP_PASSWORD="xxxx-xxxx-xxxx-xxxx"
-export ACCOUNT_MODE="MIXED"
-```
+- Exposes this MCP server directly inside Claude Code.
+- Lets you reload quickly during development (`/reload-plugins`).
+- Best when you are iterating on tools and testing changes frequently.
 
-The plugin `.mcp.json` reads those values via environment substitution.
+### Claude Extensions Mode
 
-### Security note
-
-- Never commit a real `.env` file.
-- Copy `.env.example` to `.env` and fill your real values locally.
-
----
-
-## Claude Extensions Mode (manifest.json)
-
-If you install through the Claude Extensions folder, the expected format is different from plugin mode.
-
-This project now includes `manifest.json` at repository root for that workflow.
-
-Key difference:
-- Plugin mode uses `.claude-plugin/plugin.json`
-- Extensions mode uses `manifest.json`
-
-Minimum files for Extensions mode:
+Extensions manifest:
 - `manifest.json`
+
+Minimum required files:
+- `manifest.json`
+- `bootstrap.py`
 - `server.py`
 - `requirements.txt`
 
-If your installer says `No manifest.json found`, it is looking for Extensions mode and not plugin mode.
+What it does:
+
+- Runs the project as an extension package recognized by Claude Extensions.
+- Uses `manifest.json` as the extension contract and startup definition.
+- Uses `bootstrap.py` to verify/install runtime dependencies before launching `server.py`.
+
+When to choose which:
+
+- Choose Plugin Mode for development speed and local debugging.
+- Choose Extensions Mode for extension-style deployment and runtime consistency.
 
 ---
 
-## Claude Desktop Configuration
-
-Add this server to your Claude Desktop `mcp-config.json`.
+## Modern Claude Desktop Config Block
 
 Typical macOS path:
 - `~/Library/Application Support/Claude/mcp-config.json`
-
-Example:
 
 ```json
 {
@@ -185,7 +179,7 @@ Example:
     "icloud-mail-manager": {
       "command": "/absolute/path/to/venv/bin/python",
       "args": [
-        "/absolute/path/to/apple_mcp/server.py"
+        "/absolute/path/to/icloud-mail-manager-mcp/server.py"
       ],
       "env": {
         "ICLOUD_EMAIL": "your_icloud_email@icloud.com",
@@ -197,51 +191,52 @@ Example:
 }
 ```
 
-Notes:
-- Use absolute paths for `command` and `args`.
-- Keep your `.env` file private and never commit real credentials.
-- You can set env values either in `.env` or directly in `mcp-config.json`.
+---
+
+## Troubleshooting Callouts
+
+> [!WARNING]
+> If logs show `ModuleNotFoundError: No module named 'dotenv'` followed by `Server disconnected`, runtime dependencies are missing.
+
+The project includes `bootstrap.py`, which validates and installs required packages (`mcp`, `python-dotenv`) before starting `server.py`.
+
+Manual fallback install:
+
+```bash
+/opt/homebrew/bin/python3 -m pip install --user --break-system-packages mcp python-dotenv
+```
+
+Then fully restart Claude Desktop.
 
 ---
 
-## Exposed Tools
+## Publish Security Checklist
 
-- `list_folders`
-- `manage_folder`
-- `search_emails`
-- `read_email`
-- `manage_attachments`
-- `send_email`
-- `organize_email`
-- `suggest_organization`
-
----
-
-## Security and Robustness
-
-- Credentials loaded via `python-dotenv`
-- Defensive IMAP/SMTP error handling
-- Timeout handling and authentication error reporting
-- Graceful IMAP logout and SMTP quit on every operation
+- [ ] Real `.env` is not tracked
+- [ ] `.env.example` is present and generic
+- [ ] No real email/password values in repository files
+- [ ] App-Specific Password rotated if previously exposed
+- [ ] Repository visibility set to `Private` until final validation
+- [ ] Local logs/secrets are excluded by `.gitignore`
 
 ---
 
 ## Project Structure
 
 ```text
-apple_mcp/
-├── bootstrap.py
-├── manifest.json
+icloud-mail-manager-mcp/
 ├── .claude-plugin/
 │   └── plugin.json
-├── .mcp.json
-├── .env.example
-├── .gitignore
-├── README.md
-├── requirements.txt
 ├── skills/
 │   └── icloud-help/
 │       └── SKILL.md
+├── .env.example
+├── .gitignore
+├── .mcp.json
+├── bootstrap.py
+├── manifest.json
+├── README.md
+├── requirements.txt
 └── server.py
 ```
 
@@ -249,4 +244,4 @@ apple_mcp/
 
 ## License
 
-Use and adapt this project to your own environment and security requirements.
+MIT
